@@ -1,3 +1,4 @@
+getgenv().AutoFarm = true
 loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/littlegui/main/Breaking-Point'))()
 wait(1)
 local vu = game:GetService("VirtualUser")
