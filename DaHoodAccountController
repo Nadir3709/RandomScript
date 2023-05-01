@@ -593,6 +593,12 @@ local function Initiate()
 				Setup("Food")
 			elseif Message == ".setup gun" then
 				Setup("Gun")
+			elseif Message == ".setup ufo" then
+				Setup("UFO")
+			elseif Message == ".setup police" then
+				Setup("Police")
+			elseif Message == ".setup faraway" then
+				Setup("Faraway")
 			elseif Message == ".setup admin" then
 				Setup("Admin")
 			elseif Message == ".setup klub" then
