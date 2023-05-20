@@ -1,3 +1,8 @@
+if game.CoreGui:FindFirstChild('ScreenGui') then
+game.CoreGui:FindFirstChild('ScreenGui'):Destroy()
+destroyed = true
+end
+
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
