@@ -1,8 +1,3 @@
-if game.CoreGui:FindFirstChild('LibName') then
-game.CoreGui:FindFirstChild('LibName'):Destroy()
-destroyed = true
-end
-
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
