@@ -1,5 +1,5 @@
 getgenv().AutoFarm = true
-loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/littlegui/main/Breaking-Point'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Nadir3709/RandomScript/main/BP'))()
 wait(1)
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
