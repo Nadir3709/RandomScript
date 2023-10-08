@@ -1,1 +1,51 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
+-- Window
+local Window = Library:NewWindow("Residence")
+
+
+-- Section
+local Section = Window:NewSection("Main")
+
+-- Button
+Section:CreateButton("Safe Place", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-79.71, 21.27, -124.94)
+    end
+end)
+
+Section:CreateButton("Safe Place 2", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15.41, 25.29, -53.18)
+    end
+end)
+
+Section:CreateButton("Home", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-34.18, 9.54, -47.09)
+    end
+end)
+
+Section:CreateButton("Floor 2", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3.90, 25.29, -71.19)
+    end
+end)
+
+Section:CreateButton("Electrical", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.48, 6.19, -95.05)
+    end
+end)
+
+Section:CreateButton("Oxygen", function()
+    local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if Character then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-79.69, 6.29, -127.54)
+    end
+end)
