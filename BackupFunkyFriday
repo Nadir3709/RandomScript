@@ -1,9 +1,3 @@
-print("Credits to mstudio45 for the ported UI lib of Linoria")
-print("Credits to Wally-RBLX and his devs for making this amazing script")
-print("I DO NOT OWN ANY OF THIS CODE. CREDITS TO THIS CODE AND UI LIBS ETC GO TO THEIR OWNERS.")
-print(" ")
-print("Wally RBLX's Funky Friday AutoPlay script mobile port. (READ LINES ABOVE!)")
-
 local start = tick()
 local client = game:GetService('Players').LocalPlayer;
 local set_identity = (type(syn) == 'table' and syn.set_thread_identity) or setidentity or setthreadcontext
@@ -93,21 +87,10 @@ if type(getinfo) ~= 'function' then
     end
 end
 
-local IsMobile = false;
-local DevicePlatform = Enum.Platform.None;
-pcall(function() DevicePlatform = UserInputService:GetPlatform(); end);
-IsMobile = (DevicePlatform == Enum.Platform.Android or DevicePlatform == Enum.Platform.IOS);
-local UIRepo = 'https://raw.githubusercontent.com/Bart3kk/LinLib/main/'
-local ScriptRepo = 'https://raw.githubusercontent.com/Bart3kk/funky-friday-autoplay/main/'
+local UI = urlLoad("https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/Library.lua")
+local themeManager = urlLoad("https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/addons/ThemeManager.lua")
 
-local UI = nil
-if IsMobile then
-    UI = loadstring(game:HttpGet(UIRepo .. 'TestMobileSupport.lua'))()
-else
-    UI = loadstring(game:HttpGet(UIRepo .. 'Library.lua'))()
-end
-
-local metadata = loadstring(game:HttpGet(ScriptRepo .. 'metadata.lua'))()
+local metadata = urlLoad("https://raw.githubusercontent.com/wally-rblx/funky-friday-autoplay/main/metadata.lua")
 local httpService = game:GetService('HttpService')
 
 local framework, scrollHandler, network
@@ -679,7 +662,7 @@ Groups.Autoplayer = Tabs.Main:AddLeftGroupbox('Autoplayer')
     Groups.Autoplayer:AddDropdown('PressMode', {
         Text = 'Input mode', 
         Compact = true, 
-        Default = 'firesignal', 
+        Default = 'virtual input', 
         Values = { 'firesignal', 'virtual input' }, 
         Tooltip = 'Input method used to press arrows.\n* firesignal: calls input functions directly.\n* virtual input: emulates key presses. use if "firesignal" does not work.', 
     })
