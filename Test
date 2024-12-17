@@ -136,31 +136,48 @@ autoCastConnection2 = PlayerGUI.ChildRemoved:Connect(function(GUI)
         end
     end
 end)
+-- Makes the lib working
+_Hawk = "ohhahtuhthttouttpwuttuaunbotwo"
 
-local MacLib = loadstring(game:HttpGet("https://github.com/biggaboy212/Maclib/releases/latest/download/maclib.txt"))()
+--loadstring
+local Hawk = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHanki/HawkHUB/main/LibSources/HawkLib.lua", true))()
 
--- Window
-local Window = MacLib:Window({
-    Title = "Skedz Hub"
-    DragStyle = 2 -- 1: Uses a move icon to drag, ideal for PC. 2: Uses the entire UI to drag, ideal for Mobile.
-    DisabledWindowControls <table: "Exit", "Minimize">
-  })
+--------------------------------------------------------------------------
 
--- Tab
-local Tab = TabGroup:Tab({
-    Name = "Main"
-  })
+--Creating Window
+local Window = Hawk:Window({
+	ScriptName = "Hawk HUB",
+	DestroyIfExists = true, --if false, gui wont disappear
+	Theme = "Dark" --Themes: Pink, White, Dark
+})
 
--- Section
-local Section = Tab:Section({
-    Side = "Left"
-  })
+--Creating Close Button
+Window:Close({
+	visibility = true, --if false, close button will disappear
+	Callback = function()
+		Window:Destroy() --Destroying Gui Function
+	end,
+})
 
--- Toggle
-Section:Toggle({
-    Name = "Auto Shake"
-    Default = false
-    Callback = function(Value)
-        autoShake = Value
-    end
-  })
+--Creating Minimize Button
+Window:Minimize({
+	visibility = true, --if false, close button will disappear
+	OpenButton = true, -- Visible = false etc, open button.
+	Callback = function()
+	end,
+})
+
+--Creating Tab
+local tab1 = Window:Tab("Tab")
+-- Window:Tab("Tab","Tab Title")
+
+------------------------------------------------------
+
+--Creating Section (lib elemens can be used without any section)
+--Its only a Title, not a really section
+local newsec = tab1:Section("Section")
+
+--Creating Toggle
+newsec:TextBox("Example TextBox","write here",function(value)
+	print(value)
+end)
