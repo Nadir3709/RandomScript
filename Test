@@ -157,9 +157,9 @@ local MainTab = Window:Tab({
     Icon = "house",
 }) Window:SelectTab(1)
 
--- Section
+-- Shake
 MainTab:Section({ 
-    Title = "Auto Farm",
+    Title = "Auto Shake",
     TextXAlignment = "Center"
 })
 
@@ -170,16 +170,16 @@ local Button = MainTab:Toggle({
     end
 })
 
-local Button = MainTab:Toggle({
-    Title = "Auto Reel",
-    Callback = function(Reel)
-        autoReel = Reel
-    end
+-- Cast
+MainTab:Section({ 
+    Title = "Auto Cast",
+    TextXAlignment = "Center"
 })
 
 local Button = MainTab:Toggle({
     Title = "Auto Cast",
     Callback = function(Cast)
+        autoReel = Cast
         autoCast = Cast
         local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
         if Tool ~= nil and Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil and Value == true then
@@ -201,5 +201,28 @@ local Button = MainTab:Toggle({
                 Tool.events.cast:FireServer(100)
             end
         end
+    end
+})
+
+local Dropdown = MainTab:Dropdown({
+    Title = "Auto Cast Mode",
+    Value = "Legit",
+    AllowNone = true,
+    Values = {"Legit", "Rage"},
+    Callback = function(CastMode)
+	   autoCastMode = CastMode
+    end
+})
+
+local Slider = MainTab:Slider({
+    Title = "Auto Cast Delay",
+    Step = 1,
+    Value = {
+		Default = 2,
+        Min = 0,
+        Max = 10,
+    },
+    Callback = function(CastDelay)
+        autoCastDelay = CastDelay
     end
 })
