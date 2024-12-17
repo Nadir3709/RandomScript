@@ -137,27 +137,26 @@ autoCastConnection2 = PlayerGUI.ChildRemoved:Connect(function(GUI)
     end
 end)
 
-local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/UI-Library/main/Loadstring/RayfieldLib"))()
+-- Loadstring
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
-local Window = Rayfield:CreateWindow({
-   Name = "Rayfield Example Window",
-   LoadingTitle = "Rayfield Interface Suite",
-   LoadingSubtitle = "by Sirius",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
-   },
-})
+-- Create Window
+local MainWindow = Library:NewWindow("Fisch")
 
-local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
-local Section = Tab:CreateSection("Section Example") -- The 2nd argument is to tell if its only a Title and doesnt contain elements
+-- Create Section
+local MainSection = MainWindow:NewSection("Main")
 
-local Toggle = Section:CreateToggle({
-    Name = "Toggle Example",
-    Info = "Toggle info/Description.", -- Speaks for itself, Remove if none.
-    CurrentValue = false,
-    Callback = function(Value)
-        autoShake = Value
-    end,
- })
+-- Create Button
+MainSection:CreateButton("Button", function()
+    print("Clicked")
+end)
+
+--Create Toggle
+MainSection:CreateToggle("Toggle", function(state)
+    autoShake = state
+end)
+
+--Create DropDown
+Section:CreateDropdown("DropDown", {"DropDown", "DropDown 2", "DropDown 3"}, 1, function(DropDown)
+    print(DropDown)
+end)
