@@ -136,48 +136,28 @@ autoCastConnection2 = PlayerGUI.ChildRemoved:Connect(function(GUI)
         end
     end
 end)
--- Makes the lib working
-_Hawk = "ohhahtuhthttouttpwuttuaunbotwo"
 
---loadstring
-local Hawk = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHanki/HawkHUB/main/LibSources/HawkLib.lua", true))()
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/UI-Library/main/Loadstring/RayfieldLib"))()
 
---------------------------------------------------------------------------
-
---Creating Window
-local Window = Hawk:Window({
-	ScriptName = "Hawk HUB",
-	DestroyIfExists = true, --if false, gui wont disappear
-	Theme = "Dark" --Themes: Pink, White, Dark
+local Window = Rayfield:CreateWindow({
+   Name = "Rayfield Example Window",
+   LoadingTitle = "Rayfield Interface Suite",
+   LoadingSubtitle = "by Sirius",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
 })
 
---Creating Close Button
-Window:Close({
-	visibility = true, --if false, close button will disappear
-	Callback = function()
-		Window:Destroy() --Destroying Gui Function
-	end,
-})
+local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Section Example") -- The 2nd argument is to tell if its only a Title and doesnt contain elements
 
---Creating Minimize Button
-Window:Minimize({
-	visibility = true, --if false, close button will disappear
-	OpenButton = true, -- Visible = false etc, open button.
-	Callback = function()
-	end,
-})
-
---Creating Tab
-local tab1 = Window:Tab("Tab")
--- Window:Tab("Tab","Tab Title")
-
-------------------------------------------------------
-
---Creating Section (lib elemens can be used without any section)
---Its only a Title, not a really section
-local newsec = tab1:Section("Section")
-
---Creating Toggle
-newsec:TextBox("Example TextBox","write here",function(value)
-	print(value)
-end)
+local Toggle = Section:CreateToggle({
+    Name = "Toggle Example",
+    Info = "Toggle info/Description.", -- Speaks for itself, Remove if none.
+    CurrentValue = false,
+    Callback = function(Value)
+        autoShake = Value
+    end,
+ })
