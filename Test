@@ -137,52 +137,69 @@ autoCastConnection2 = PlayerGUI.ChildRemoved:Connect(function(GUI)
     end
 end)
 
--- Loadstring
-local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
 
--- Create Window
-local MainWindow = Library:NewWindow("Fisch")
+-- Window
+local Window = WindUI:CreateWindow({
+    Title = "Skedz Hub | Fisch", -- UI Title
+    Icon = "door-open", -- Url or rbxassetid or lucide
+    Author = "Nadir", -- Author & Creator
+    Size = UDim2.fromOffset(100, 100), -- UI Size
+    Transparent = false,-- UI Transparency
+    Theme = "Dark", -- UI Theme
+    SideBarWidth = 200, -- UI Sidebar Width (number)
+    HasOutline = false, -- Adds Oultines to the window
+})
 
--- Create Section
-local MainSection = MainWindow:NewSection("Main")
+-- Tab
+local MainTab = Window:Tab({
+    Title = "Main",
+    Icon = "house",
+}) Window:SelectTab(1)
 
--- Create Button
+-- Section
+MainTab:Section({ 
+    Title = "Auto Farm",
+    TextXAlignment = "Center"
+})
 
+local Button = MainTab:Toggle({
+    Title = "Auto Shake",
+    Callback = function(Shake)
+        autoShake = Shake
+    end
+})
 
---Create Toggle
-MainSection:CreateToggle("Auto Shake", function(Shake)
-    autoShake = Shake
-end)
+local Button = MainTab:Toggle({
+    Title = "Auto Reel",
+    Callback = function(Reel)
+        autoReel = Reel
+    end
+})
 
-MainSection:CreateToggle("Auto Cast", function(Cast)
-    autoCast = Cast
-    local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
-    if Tool ~= nil and Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil and Value == true then
-        task.wait(autoCastDelay)
-        if autoCastMode == "Legit" then
-            VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, LocalPlayer, 0)
-            HumanoidRootPart.ChildAdded:Connect(function()
-                if HumanoidRootPart:FindFirstChild("power") ~= nil and HumanoidRootPart.power.powerbar.bar ~= nil then
-                    HumanoidRootPart.power.powerbar.bar.Changed:Connect(function(property)
-                        if property == "Size" then
-                            if HumanoidRootPart.power.powerbar.bar.Size == UDim2.new(1, 0, 1, 0) then
-                                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, LocalPlayer, 0)
+local Button = MainTab:Toggle({
+    Title = "Auto Cast",
+    Callback = function(Cast)
+        autoCast = Cast
+        local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
+        if Tool ~= nil and Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil and Value == true then
+            task.wait(autoCastDelay)
+            if autoCastMode == "Legit" then
+                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, LocalPlayer, 0)
+                HumanoidRootPart.ChildAdded:Connect(function()
+                    if HumanoidRootPart:FindFirstChild("power") ~= nil and HumanoidRootPart.power.powerbar.bar ~= nil then
+                        HumanoidRootPart.power.powerbar.bar.Changed:Connect(function(property)
+                            if property == "Size" then
+                                if HumanoidRootPart.power.powerbar.bar.Size == UDim2.new(1, 0, 1, 0) then
+                                    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, LocalPlayer, 0)
+                                end
                             end
-                        end
-                    end)
-                end
-            end)
-        elseif autoCastMode == "Rage" then
-            Tool.events.cast:FireServer(100)
+                        end)
+                    end
+                end)
+            elseif autoCastMode == "Rage" then
+                Tool.events.cast:FireServer(100)
+            end
         end
     end
-end)
-
-MainSection:CreateToggle("Auto Reel", function(Reel)
-    autoReel = Reel
-end)
-
---Create DropDown
-MainSection:CreateDropdown("Auto Cast Mode", {"Legit", "Rage"}, 1, function(Value)
-    autoCastMode = Value
-end)
+})
