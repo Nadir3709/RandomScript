@@ -183,6 +183,6 @@ MainSection:CreateToggle("Auto Reel", function(Reel)
 end)
 
 --Create DropDown
-MainSection:CreateDropdown("Auto Cast Mode", {"Legit", "Rage"}, 0, function(Value)
+MainSection:CreateDropdown("Auto Cast Mode", {"Legit", "Rage"}, 1, function(Value)
     autoCastMode = Value
 end)
