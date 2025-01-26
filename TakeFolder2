@@ -1,0 +1,35 @@
+local url = "https://pastebin.com/raw/JnRWP0XW" -- Ganti dengan URL raw yang lo pakai
+
+-- Ambil isi file dari link raw
+local success, response = pcall(function()
+    return game:HttpGet(url)
+end)
+
+if not success then
+    warn("❌ Gagal ambil data dari URL:", response)
+    return
+end
+
+-- Path folder yang mau dibuat
+local baseFolder = "Native"
+local subFolder1 = baseFolder .. "/Fisch"
+local subFolder2 = subFolder1 .. "/Teleports"
+local targetFile = subFolder2 .. "/teleports.json"
+
+-- Buat folder satu per satu
+if not isfolder(baseFolder) then
+    makefolder(baseFolder)
+end
+
+if not isfolder(subFolder1) then
+    makefolder(subFolder1)
+end
+
+if not isfolder(subFolder2) then
+    makefolder(subFolder2)
+end
+
+-- Simpan isi JSON ke file
+writefile(targetFile, response)
+
+print("✅ File teleport.json berhasil dibuat di:", targetFile)
