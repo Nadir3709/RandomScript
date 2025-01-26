@@ -1,0 +1,22 @@
+local url = "https://pastebin.com/raw/Qfz4RZWT"
+
+-- Ambil isi file dari link raw
+local success, response = pcall(function()
+    return game:HttpGet(url)
+end)
+
+if not success then
+    warn("❌ Gagal ambil data dari URL:", response)
+    return
+end
+
+-- Hapus folder lama dan buat yang baru
+if isfolder("SpeedHubX") then
+    delfolder("SpeedHubX")
+end
+makefolder("SpeedHubX")
+
+-- Simpan isi JSON ke file
+writefile("SpeedHubX/Fisch_V5.json", response)
+
+print("✅ File Fisch_V5.json berhasil dibuat!")
