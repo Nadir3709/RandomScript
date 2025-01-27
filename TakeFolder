@@ -1,22 +1,84 @@
-local url = "https://pastebin.com/raw/Qfz4RZWT"
+local Mode = _G.Mode
+if _G.Mode == "1" then
+    local url = "https://pastebin.com/raw/Qfz4RZWT"
 
--- Ambil isi file dari link raw
-local success, response = pcall(function()
-    return game:HttpGet(url)
-end)
+    -- Ambil isi file dari link raw
+    local success, response = pcall(function()
+        return game:HttpGet(url)
+    end)
+    
+    if not success then
+        warn("❌ Gagal ambil data dari URL:", response)
+        return
+    end
+    
+    -- Hapus folder lama dan buat yang baru
+    if isfolder("SpeedHubX") then
+        delfolder("SpeedHubX")
+    end
+    makefolder("SpeedHubX")
+    
+    -- Simpan isi JSON ke file
+    writefile("SpeedHubX/Fisch_V5.json", response)
+    
+    print("✅ File Fisch_V5.json berhasil dibuat!")
+elseif _G.Mode == "3" then
+    local url = "https://pastebin.com/raw/JnRWP0XW" -- Ganti dengan URL raw yang lo pakai
 
-if not success then
-    warn("❌ Gagal ambil data dari URL:", response)
-    return
+    -- Ambil isi file dari link raw
+    local success, response = pcall(function()
+        return game:HttpGet(url)
+    end)
+    
+    if not success then
+        warn("❌ Gagal ambil data dari URL:", response)
+        return
+    end
+    
+    -- Path folder yang mau dibuat
+    local baseFolder = "Native"
+    local subFolder1 = baseFolder .. "/Fisch"
+    local subFolder2 = subFolder1 .. "/Teleports"
+    local targetFile = subFolder2 .. "/teleports.json"
+    
+    -- Buat folder satu per satu
+    if not isfolder(baseFolder) then
+        makefolder(baseFolder)
+    end
+    
+    if not isfolder(subFolder1) then
+        makefolder(subFolder1)
+    end
+    
+    if not isfolder(subFolder2) then
+        makefolder(subFolder2)
+    end
+    
+    -- Simpan isi JSON ke file
+    writefile(targetFile, response)
+    
+    print("✅ File teleport.json berhasil dibuat di:", targetFile)
+elseif _G.Mode == "2" then
+    local url = "https://pastebin.com/raw/rqc7x7kE"
+
+    -- Ambil isi file dari link raw
+    local success, response = pcall(function()
+        return game:HttpGet(url)
+    end)
+    
+    if not success then
+        warn("❌ Gagal ambil data dari URL:", response)
+        return
+    end
+    
+    -- Hapus folder lama dan buat yang baru
+    if isfolder("SpeedHubX") then
+        delfolder("SpeedHubX")
+    end
+    makefolder("SpeedHubX")
+    
+    -- Simpan isi JSON ke file
+    writefile("SpeedHubX/Fisch_V5.json", response)
+    
+    print("✅ File Fisch_V5.json berhasil dibuat!")
 end
-
--- Hapus folder lama dan buat yang baru
-if isfolder("SpeedHubX") then
-    delfolder("SpeedHubX")
-end
-makefolder("SpeedHubX")
-
--- Simpan isi JSON ke file
-writefile("SpeedHubX/Fisch_V5.json", response)
-
-print("✅ File Fisch_V5.json berhasil dibuat!")
