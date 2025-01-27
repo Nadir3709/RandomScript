@@ -81,4 +81,6 @@ elseif _G.Mode == "2" then
     writefile("SpeedHubX/Fisch_V5.json", response)
     
     print("✅ File Fisch_V5.json berhasil dibuat!")
+    else
+    print("pilih woi")
 end
